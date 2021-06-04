@@ -56,6 +56,9 @@ clear:
 push:
 	docker push ${PROD_OUT_IMG}
 
+pull:
+	docker pull ${PROD_OUT_IMG}
+
 ## End Production ##
 
 ## Development ##
@@ -95,6 +98,9 @@ dev-clear:
 
 dev-push:
 	docker push ${DEV_OUT_IMG}
+
+dev-pull:
+	docker pull ${DEV_OUT_IMG}
 
 ## End Development ##
 

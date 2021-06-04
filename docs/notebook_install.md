@@ -1,7 +1,6 @@
-﻿# CEOS Open Data Cube Notebooks Installation Guide
+# AMA Open Data Cube Drone Paper Notebooks
 
-This document will guide users through the process of installing and configuring 
-our Open Data Cube (ODC) Jupyter Notebook server.
+This document will guide users through the process of installing and configuring the Open Data Cube (ODC) Jupyter Notebook server.
 
 ## Contents
 
@@ -44,11 +43,13 @@ Before we begin, note that multiple commands should not be copied and pasted to 
 >### <a name="install_pre_start_config"></a> Pre-start configuration
 -------
 
-You can set the port that the notebooks will be available on with the `HOST_PORT` environment varaible in the `docker/dev/.env` file. By default, the notebooks will be available on port `8080` in the development environment.
+You can set the port that the notebooks will be available on with the `HOST_PORT` environment varaible in the `build/docker/dev/.env` file. By default, the notebooks will be available on port `8080` in the development environment.
 
-The `ODC_DB_*` variables in the `docker/dev/.env` file are the connection credentials for the ODC database. The `ODC_DB_*` variables are set to match the default settings for the ODC database container, but if these settings were changed in the command for the `create-odc-db` target in the `Makefile` file, they will need to be changed here.
+The `ODC_DB_*` variables in the `build/docker/dev/.env` file are the connection credentials for the ODC database. The `ODC_DB_*` variables are set to match the default settings for the ODC database container, but if these settings were changed in the command for the `create-odc-db` target in the `Makefile` file, they will need to be changed here.
 
-If you want to access data on S3, you will need to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables. By default, they are set to use the values of identically named environment variables. You should set these environment variables before running the UI. Do not write these AWS credentials to the `docker/dev/.env` file directly.
+If you want to access data on S3, you will need to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables. By default, they are set to use the values of identically named environment variables. You should set these environment variables before running the UI. Do not write these AWS credentials to the `build/docker/dev/.env` file directly.
+
+The pre-start configuration for the production environment in `build/docker/prod` is very similar to the pre-start configuration for the development environment. A notable difference is that the default port for the production environment is `8081`.
 
 >### <a name="install_start_stop_restart"></a> Start, stop, or restart the notebook server
 -------
@@ -72,6 +73,8 @@ When starting or restarting in the future, you can use the `-no-build` versions 
 * dev-up-no-build
 * dev-restart-no-build
 
+The commands for the production environment in `build/docker/prod` are very similar to the commands for the development environment.
+
 >### <a name="install_ssh"></a> SSH to the notebook server
 -------
 
@@ -86,13 +89,14 @@ source /env/bin/activate
 ```
 This must be run for every connection with `make dev-ssh`.
 
-In the development environment, you also can launch terminals by clicking the `New` dropdown button and then the `Terminal` option. This will provide a terminal through a webpage in your browser.
+In the development environment, you can also launch terminals through the interface in your web browser by clicking the `New` dropdown button and then the `Terminal` option. This will provide a terminal through a webpage in your browser.
+
+The same applies to the production environment in `build/docker/prod`.
 
 ## <a name="connect"></a> Access the notebooks
 -------
 
-In the development environment, you can connect to the notebooks on the host machine at `localhost:<HOST_PORT>`, where `<HOST_PORT>` is the value of the `HOST_PORT` environment variable specified in `docker/dev/.env`.
-
+In the development environment, you can connect to the notebooks on the host machine at `localhost:<HOST_PORT>`, where `<HOST_PORT>` is the value of the `HOST_PORT` environment variable specified in the `.env` file of the environment (i.e. `build/docker/dev/.env` or `build/docker/prod/.env`).
 
 ## <a name="faqs"></a> Common problems/FAQs
 -------

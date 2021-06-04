@@ -21,7 +21,7 @@ services:
       # 8888 is the Jupyter notebook default port
       - ${HOST_PORT}:8888
     volumes:
-      - ${DKR_CMP_CONTEXT}/notebooks:${NOTEBOOK_ROOT}
+      - ${DKR_CMP_CONTEXT}:${ROOT_DIR}
     networks:
       - odc
     restart: "no"
