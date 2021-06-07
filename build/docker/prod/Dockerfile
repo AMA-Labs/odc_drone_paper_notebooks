@@ -9,5 +9,5 @@ COPY docs docs
 COPY README.ipynb README.ipynb
 
 USER root
-RUN chown -R jovyan ${NOTEBOOK_ROOT}
+RUN chown -R jovyan ${ROOT_DIR}
 USER jovyan
