@@ -1,6 +1,6 @@
-# AMA Open Data Cube Drone Paper Notebooks
+# Operation Manual
 
-This document will guide users through the process of installing and configuring the Open Data Cube (ODC) Jupyter Notebook server.
+This document will guide users through the process of operating the Jupyter Notebook server.
 
 ## Contents
 
@@ -43,7 +43,7 @@ You can set the port that the notebooks will be available on with the `HOST_PORT
 
 The `ODC_DB_*` variables in the `build/docker/dev/.env` file are the connection credentials for the ODC database. The `ODC_DB_*` variables are set to match the default settings for the ODC database container, but if these settings were changed in the command for the `create-odc-db` target in the `Makefile` file, they will need to be changed here.
 
-If you want to access data on S3, you will need to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables. By default, they are set to use the values of identically named environment variables. You should set these environment variables before running the UI. Do not write these AWS credentials to the `build/docker/dev/.env` file directly.
+If you want to access data on S3, you will need to set the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` variables. By default, they are set to use the values of identically named environment variables. You should set these environment variables before starting the environment. Do not write these AWS credentials to the `build/docker/dev/.env` file directly.
 
 The pre-start configuration for the production environment in `build/docker/prod` is very similar to the pre-start configuration for the development environment. A notable difference is that the default port for the production environment is `8081`.
 
@@ -106,4 +106,3 @@ A:
     machine as the Jupyter server, and `<IP-or-hostname>:<HOST_PORT>` otherwise.<br>
     <br>
     Also check that there is no firewall blocking incoming or outgoing traffic on the `HOST_PORT` port.
-
