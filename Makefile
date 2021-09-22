@@ -21,6 +21,8 @@ PROD_COMMON_EXPRTS=export OUT_IMG=${PROD_OUT_IMG}; ${COMMON_EXPRTS}
 
 DEV_COMMON_EXPRTS=export OUT_IMG=${DEV_OUT_IMG}; ${COMMON_EXPRTS}
 
+.PHONY: build
+
 ## Production ##
 
 build:
